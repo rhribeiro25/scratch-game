@@ -17,54 +17,22 @@ public class Game {
         generateMatrix();
         this.reward = 0;
         this.appliedWinningCombinations = new HashMap<>();
-        this.appliedBonusSymbol = null;
     }
 
     public void play() {
-        calculateReward();
         applyWinningCombinations();
+        applyBonusSymbol();
+        calculateReward();
     }
 
     private void generateMatrix() {
-
         this.matrix = new String[config.getRows()][config.getColumns()];
-
-        this.calculateStdSymbols();
-
-        this.calculateBonusSymbols();
+        this.applyStdSymbolsProbabilities();
+        this.applyBonusSymbolsProbabilities();
     }
 
-    public void calculateBonusSymbols() {
-        Map<String, Double> cellBonusSymbols = new HashMap<>();
 
-        double totalWeightBonusSymbol = config.getProbabilities().getBonusSymbols().getSymbols().values().stream()
-            .mapToDouble(Double::doubleValue)
-            .sum();
-
-        if (totalWeightBonusSymbol == 0) {
-            throw new IllegalArgumentException("Total weight can not be zero for bonus symbols!");
-        }
-
-        for(String symbol : config.getProbabilities().getBonusSymbols().getSymbols().keySet()) {
-            cellBonusSymbols.put(symbol, (config.getProbabilities().getBonusSymbols().getSymbols().get(symbol)/totalWeightBonusSymbol));
-        }
-        LinkedHashMap<String, Double> sortedCellBonusSymbols = cellBonusSymbols.entrySet()
-            .stream()
-            .sorted(Map.Entry.comparingByValue())
-            .collect(Collectors.toMap(
-                    Map.Entry::getKey,
-                    Map.Entry::getValue,
-                    (e1, e2) -> e1,
-                    LinkedHashMap::new
-            ));
-
-        Random rand = new Random();
-        int randomRow = rand.nextInt(config.getRows());
-        int randomColunm = rand.nextInt(config.getColumns());
-        matrix[randomRow][randomColunm] = this.applyingSymbolProbability(sortedCellBonusSymbols);
-    }
-
-    public void calculateStdSymbols() {
+    public void applyStdSymbolsProbabilities() {
         Map<String, Double> cellStdSymbols = new HashMap<>();
 
         for (int i = 0; i < config.getRows(); i++) {
@@ -99,14 +67,46 @@ public class Game {
                                             LinkedHashMap::new
                                     ));
 
-                            matrix[row][column] = this.applyingSymbolProbability(sortedCellStdSymbols);
+                            matrix[row][column] = this.applySymbolProbabilityByCell(sortedCellStdSymbols);
                     }
                 );
             }
         }
     }
 
-    public String applyingSymbolProbability(LinkedHashMap<String, Double> sortedCellProbabilities) {
+    public void applyBonusSymbolsProbabilities() {
+        Map<String, Double> cellBonusSymbols = new HashMap<>();
+
+        double totalWeightBonusSymbol = config.getProbabilities().getBonusSymbols().getSymbols().values().stream()
+            .mapToDouble(Double::doubleValue)
+            .sum();
+
+        if (totalWeightBonusSymbol == 0) {
+            throw new IllegalArgumentException("Total weight can not be zero for bonus symbols!");
+        }
+
+        for(String symbol : config.getProbabilities().getBonusSymbols().getSymbols().keySet()) {
+            cellBonusSymbols.put(symbol, (config.getProbabilities().getBonusSymbols().getSymbols().get(symbol)/totalWeightBonusSymbol));
+        }
+        LinkedHashMap<String, Double> sortedCellBonusSymbols = cellBonusSymbols.entrySet()
+            .stream()
+            .sorted(Map.Entry.comparingByValue())
+            .collect(Collectors.toMap(
+                    Map.Entry::getKey,
+                    Map.Entry::getValue,
+                    (e1, e2) -> e1,
+                    LinkedHashMap::new
+            ));
+
+        Random rand = new Random();
+        int randomRow = rand.nextInt(config.getRows());
+        int randomColunm = rand.nextInt(config.getColumns());
+
+        appliedBonusSymbol = this.applySymbolProbabilityByCell(sortedCellBonusSymbols);
+        matrix[randomRow][randomColunm] = appliedBonusSymbol;
+    }
+
+    public String applySymbolProbabilityByCell(LinkedHashMap<String, Double> sortedCellProbabilities) {
 
         Random rand = new Random();
         double randomValue = rand.nextDouble(); // Value between 0.0 and 1.0 (0% and 100%)
@@ -124,10 +124,6 @@ public class Game {
             count++;
         }
         return "";
-    }
-
-    private void calculateReward() {
-
     }
 
     private void applyWinningCombinations() {
@@ -225,6 +221,15 @@ public class Game {
                 }
             }
         }
+    }
+
+    private void calculateReward() {
+
+    }
+
+    private void applyBonusSymbol(){
+        if(appliedWinningCombinations.isEmpty())
+            appliedBonusSymbol = null;
     }
 
     public Result getResult() {
