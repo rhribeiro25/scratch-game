@@ -1,6 +1,6 @@
 package br.com.rhribeiro25;
 
-import br.com.rhribeiro25.infra.controller.GameController;
+import br.com.rhribeiro25.presentation.controllers.GameController;
 import br.com.rhribeiro25.domain.Config;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -34,11 +34,7 @@ public class Main {
         }
 
         try {
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode configJson = mapper.readTree(new File(configPath));
-            Config config = mapper.treeToValue(configJson, Config.class);
-
-            GameController gameController = new GameController(config);
+            GameController gameController = new GameController(configPath);
             gameController.play(bettingAmount);
 
             String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(gameController.getResult());

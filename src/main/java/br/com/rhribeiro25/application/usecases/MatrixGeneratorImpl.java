@@ -6,21 +6,16 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class MatrixGeneratorImpl implements MatrixGenerator {
-    private final Config config;
-
-    public MatrixGeneratorImpl(Config config) {
-        this.config = config;
-    }
 
     @Override
-    public String[][] generate() {
+    public String[][] generate(Config config) {
         String[][] matrix = new String[config.getRows()][config.getColumns()];
-        applyStandardSymbolProbabilities(matrix);
-        applyBonusSymbol(matrix);
+        applyStandardSymbolProbabilities(matrix,config);
+        applyBonusSymbol(matrix, config);
         return matrix;
     }
 
-    private void applyStandardSymbolProbabilities(String[][] matrix) {
+    private void applyStandardSymbolProbabilities(String[][] matrix, Config config) {
         Map<String, Double> cellStdSymbols = new HashMap<>();
 
         for (int i = 0; i < config.getRows(); i++) {
@@ -60,7 +55,7 @@ public class MatrixGeneratorImpl implements MatrixGenerator {
         }
     }
 
-    private void applyBonusSymbol(String[][] matrix) {
+    private void applyBonusSymbol(String[][] matrix, Config config) {
         Map<String, Double> cellBonusSymbols = new HashMap<>();
 
         double totalWeightBonusSymbol = config.getProbabilities().getBonusSymbols().getSymbols().values().stream()

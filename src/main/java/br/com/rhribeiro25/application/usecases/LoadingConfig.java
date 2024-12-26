@@ -2,6 +2,6 @@ package br.com.rhribeiro25.application.usecases;
 
 import br.com.rhribeiro25.domain.Config;
 
-public interface MatrixGenerator {
-    String[][] generate(Config configDto);
+public interface LoadingConfig {
+    Config loadingConfig(String configPath);
 }

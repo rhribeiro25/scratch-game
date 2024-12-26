@@ -5,22 +5,20 @@ import br.com.rhribeiro25.domain.Config;
 import java.util.*;
 
 public class WinningCombinationVerifierImpl implements WinningCombinationVerifier {
-    private final Config config;
     private Map<String, List<String>> winningCombinations;
 
-    public WinningCombinationVerifierImpl(Config config) {
-        this.config = config;
-        winningCombinations = new HashMap<>();
+    public WinningCombinationVerifierImpl() {
+        this.winningCombinations = new HashMap<>();
     }
 
     @Override
-    public Map<String, List<String>> verify(String[][] matrix) {
-        verifySameSymbolCombinations(matrix, winningCombinations);
-        verifyLinearCombinations(matrix, winningCombinations);
+    public Map<String, List<String>> verify(String[][] matrix, Config config) {
+        verifySameSymbolCombinations(matrix, winningCombinations, config);
+        verifyLinearCombinations(matrix, winningCombinations, config);
         return winningCombinations;
     }
 
-    private void verifySameSymbolCombinations(String[][] matrix, Map<String, List<String>> winningCombinations) {
+    private void verifySameSymbolCombinations(String[][] matrix, Map<String, List<String>> winningCombinations, Config config) {
         for(String symbol : config.getSymbols().keySet()){
             long countBySymbol = Arrays.stream(matrix)
                     .flatMap(Arrays::stream)
@@ -36,24 +34,25 @@ public class WinningCombinationVerifierImpl implements WinningCombinationVerifie
         }
     }
 
-    private void verifyLinearCombinations(String[][] matrix, Map<String, List<String>> winningCombinations) {
+    private void verifyLinearCombinations(String[][] matrix, Map<String, List<String>> winningCombinations, Config config) {
         for(String combinationKey : config.getWinCombinations().keySet()){
             if(config.getWinCombinations().get(combinationKey).getGroup().equals("horizontally_linear_symbols")){
-                verifyHorizontallyLinearSymbols(combinationKey, matrix, winningCombinations);
+                verifyHorizontallyLinearSymbols(combinationKey, matrix, winningCombinations, config);
             }
             if(config.getWinCombinations().get(combinationKey).getGroup().equals("vertically_linear_symbols")){
-                verifyVerticallyLinearSymbols(combinationKey, matrix, winningCombinations);
+                verifyVerticallyLinearSymbols(combinationKey, matrix, winningCombinations, config);
             }
             if(config.getWinCombinations().get(combinationKey).getGroup().equals("ltr_diagonally_linear_symbols")){
-                verifyDiagonallyLinearSymbols(combinationKey, matrix, winningCombinations);
+                verifyDiagonallyLinearSymbols(combinationKey, matrix, winningCombinations, config);
             }
             if(config.getWinCombinations().get(combinationKey).getGroup().equals("rtl_diagonally_linear_symbols")){
-                verifyHorizontallyLinearSymbols(combinationKey, matrix, winningCombinations);
+                verifyHorizontallyLinearSymbols(combinationKey, matrix, winningCombinations, config);
             }
         }
     }
 
-    private void verifyHorizontallyLinearSymbols(String combinationKey, String[][] matrix, Map<String, List<String>> winningCombinations){
+    private void verifyHorizontallyLinearSymbols(String combinationKey, String[][] matrix,
+                                                 Map<String, List<String>> winningCombinations, Config config){
         for(String symbol : config.getSymbols().keySet()){
             for(List<String> coveredAreas : config.getWinCombinations().get(combinationKey).getCoveredAreas()){
                 int count = 0;
@@ -72,7 +71,8 @@ public class WinningCombinationVerifierImpl implements WinningCombinationVerifie
         }
     }
 
-    private void verifyVerticallyLinearSymbols(String combinationKey, String[][] matrix, Map<String, List<String>> winningCombinations){
+    private void verifyVerticallyLinearSymbols(String combinationKey, String[][] matrix,
+                                               Map<String, List<String>> winningCombinations, Config config){
         for(String symbol : config.getSymbols().keySet()){
             for(List<String> coveredAreas : config.getWinCombinations().get(combinationKey).getCoveredAreas()){
                 int count = 0;
@@ -91,7 +91,8 @@ public class WinningCombinationVerifierImpl implements WinningCombinationVerifie
         }
     }
 
-    private void verifyDiagonallyLinearSymbols(String combinationKey, String[][] matrix, Map<String, List<String>> winningCombinations){
+    private void verifyDiagonallyLinearSymbols(String combinationKey, String[][] matrix,
+                                               Map<String, List<String>> winningCombinations, Config config){
         for(String symbol : config.getSymbols().keySet()){
             for(List<String> coveredAreas : config.getWinCombinations().get(combinationKey).getCoveredAreas()){
                 int count = 0;

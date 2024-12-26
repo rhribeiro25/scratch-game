@@ -10,7 +10,7 @@
 
 ## Description ##
 
-Problem statement: You need to build a scratch game, that will generate a matrix (for example 3x3) from symbols(based on probabilities for each individual cell) and based on winning combintations user either will win or lost.
+Problem statement: You need to build a scratch game, that will generate a matrix (for example 3x3) from symbols(based on probabilitiesDto for each individual cell) and based on winning combintations user either will win or lost.
 User will place a bet with any amount which we call *betting amount* in this assignment.
 
 
@@ -98,7 +98,7 @@ Let's look at the configuration file below:
           "impact": "miss"
         }
     },
-    "probabilities": {
+    "probabilitiesDto": {
         "standard_symbols": [
             {
             "column": 0,
@@ -229,19 +229,19 @@ Let's look at the configuration file below:
 | symbol.{X}.type                                      | can be either standard or bonus                                                                                                                                                                                           |
 | symbol.{X}.extra                                     | [only for bonuses] extra amount which will be added to the reward                                                                                                                                                         |
 | symbol.{X}.impact                                    | [only for bonuses] fixed values: multiply_reward (which multiply final reward to *symbol.{X}.reward_multiplier*), extra_bonus(will add *symbol.{X}.extra* to the final reward), miss(nothing)                             |
-| probabilities                                        | list of probabilities                                                                                                                                                                                                     |
-| probabilities.standard_symbols                       | list of probabilities for standard symbols                                                                                                                                                                                |
-| probabilities.standard_symbols[...].column           | column index                                                                                                                                                                                                              |
-| probabilities.standard_symbols[...].row              | row index                                                                                                                                                                                                                 |
-| probabilities.standard_symbols[...].symbols          | map of a symbol and it's probability number(to calculate to probability percentage just sum all symbols probability numbers and divide individual symbol's probability number to total probability numbers)               |
-| probabilities.bonus_symbols                          | list of probabilities for bonus symbols                                                                                                                                                                                   |
-| probabilities.bonus_symbols.symbols                  | map of a symbol and it's probability number(to calculate to probability percentage just sum all symbols probability numbers and divide individual symbol's probability number to total probability numbers)               |
-| probabilities.win_combinations                       | list of winning combinations                                                                                                                                                                                              |
-| probabilities.win_combinations.{X}.reward_multiplier | will multiply reward                                                                                                                                                                                                      |
-| probabilities.win_combinations.{X}.count             | required count of the same symbols to activate the reward                                                                                                                                                                 |
-| probabilities.win_combinations.{X}.group             | group which the winning combination belongs to, max 1 winning combination should be applied for each win combination group                                                                                                |
-| probabilities.win_combinations.{X}.covered_areas     | array of array of strings which is described as "%d:%d" which demonstrates row and column number respectively                                                                                                             |
-| probabilities.win_combinations.{X}.when              | fixed values: same_symbols (if one symbol repeated in the matrix *probabilities.win_combinations.{X}.count* times), linear_symbols(if it matches to *probabilities.win_combinations.{X}.covered_areas*)                   |
+| probabilitiesDto                                        | list of probabilitiesDto                                                                                                                                                                                                     |
+| probabilitiesDto.standard_symbols                       | list of probabilitiesDto for standard symbols                                                                                                                                                                                |
+| probabilitiesDto.standard_symbols[...].column           | column index                                                                                                                                                                                                              |
+| probabilitiesDto.standard_symbols[...].row              | row index                                                                                                                                                                                                                 |
+| probabilitiesDto.standard_symbols[...].symbols          | map of a symbol and it's probability number(to calculate to probability percentage just sum all symbols probability numbers and divide individual symbol's probability number to total probability numbers)               |
+| probabilitiesDto.bonus_symbols                          | list of probabilitiesDto for bonus symbols                                                                                                                                                                                   |
+| probabilitiesDto.bonus_symbols.symbols                  | map of a symbol and it's probability number(to calculate to probability percentage just sum all symbols probability numbers and divide individual symbol's probability number to total probability numbers)               |
+| probabilitiesDto.win_combinations                       | list of winning combinations                                                                                                                                                                                              |
+| probabilitiesDto.win_combinations.{X}.reward_multiplier | will multiply reward                                                                                                                                                                                                      |
+| probabilitiesDto.win_combinations.{X}.count             | required count of the same symbols to activate the reward                                                                                                                                                                 |
+| probabilitiesDto.win_combinations.{X}.group             | group which the winning combination belongs to, max 1 winning combination should be applied for each win combination group                                                                                                |
+| probabilitiesDto.win_combinations.{X}.covered_areas     | array of array of strings which is described as "%d:%d" which demonstrates row and column number respectively                                                                                                             |
+| probabilitiesDto.win_combinations.{X}.when              | fixed values: same_symbols (if one symbol repeated in the matrix *probabilitiesDto.win_combinations.{X}.count* times), linear_symbols(if it matches to *probabilitiesDto.win_combinations.{X}.covered_areas*)                   |
 
 - Note: Fields which are marked as OPTIONAL, are not required but will add extra points to the candidate if the candidate implements it.
 - Note (2): Bonus symbol can be generated randomly in any cell(s) in the matrix
