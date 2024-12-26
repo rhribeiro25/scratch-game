@@ -24,7 +24,7 @@ public class Main {
         int bettingAmount = Integer.parseInt(args[1]);*/
 
         String configPath = "C:/Users/rhrib/OneDrive/Documentos/Projects/scratch-game/src/main/resources/config.json";
-        int bettingAmount = 1000;
+        int bettingAmount = 10;
 
         if (configPath == null || bettingAmount <= 0) {
             System.out.println("Invalid arguments. Please provide a valid config file and betting amount greater than zero.");

@@ -229,7 +229,26 @@ public class Game {
     }
 
     private void calculateReward() {
-
+        double rewardBySymbol = 0;
+        for(String symbol : config.getProbabilities().getStandardSymbols().getFirst().getSymbols().keySet()){
+            if(appliedWinningCombinations != null && appliedWinningCombinations.get(symbol) != null) {
+                rewardBySymbol = betAmount * config.getSymbols().get(symbol).getRewardMultiplier();
+                for (String winningCombination : appliedWinningCombinations.get(symbol)) {
+                    rewardBySymbol *= config.getWinCombinations().get(winningCombination).getRewardMultiplier();
+                }
+                if(appliedBonusSymbol != null) {
+                    if (appliedBonusSymbol.equals("10x"))
+                        rewardBySymbol *= 10;
+                    if (appliedBonusSymbol.equals("5x"))
+                        rewardBySymbol *= 5;
+                    if (appliedBonusSymbol.equals("+1000"))
+                        rewardBySymbol += 1000;
+                    if (appliedBonusSymbol.equals("+500"))
+                        rewardBySymbol += 500;
+                }
+                reward += rewardBySymbol;
+            }
+        }
     }
 
     public Result getResult() {
