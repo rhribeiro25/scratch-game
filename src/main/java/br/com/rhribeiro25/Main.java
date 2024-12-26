@@ -16,7 +16,7 @@ public class Main {
 
         /*if (args.length < 2) {
             System.out.println("To use this application, you need to pass two arguments: " +
-                    "\nUsage: java -jar <your-jar-file> --config <config.json> --betting-amount <amount>");
+                    "\nUsage: java -jar <your-jar-file> --config <config_matrix[5][5].json> --betting-amount <amount>");
             return;
         }
 

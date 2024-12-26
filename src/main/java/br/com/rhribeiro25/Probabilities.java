@@ -10,7 +10,6 @@ public class Probabilities {
     private List<StandardSymbolProbability> standardSymbols;
     @JsonProperty("bonus_symbols")
     private BonusSymbols bonusSymbols;
-    private Map<String, WinCombination> winCombinations;
 
     public List<StandardSymbolProbability> getStandardSymbols() {
         return standardSymbols;
@@ -28,11 +27,4 @@ public class Probabilities {
         this.bonusSymbols = bonusSymbols;
     }
 
-    public Map<String, WinCombination> getWinCombinations() {
-        return winCombinations;
-    }
-
-    public void setWinCombinations(Map<String, WinCombination> winCombinations) {
-        this.winCombinations = winCombinations;
-    }
 }
