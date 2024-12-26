@@ -6,5 +6,5 @@ import java.util.List;
 import java.util.Map;
 
 public interface WinningCombinationVerifier {
-    Map<String, List<String>> verify(String[][] matrix, Config config);
+    void verify(String[][] matrix, Config config, Map<String, List<String>> winningCombinations);
 }

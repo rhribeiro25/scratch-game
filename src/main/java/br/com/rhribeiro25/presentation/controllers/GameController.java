@@ -3,6 +3,8 @@ package br.com.rhribeiro25.presentation.controllers;
 import br.com.rhribeiro25.application.usecases.*;
 import br.com.rhribeiro25.domain.Config;
 import br.com.rhribeiro25.domain.Result;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +15,11 @@ public class GameController {
 
     private final LoadingConfig loadingConfig;
     private final MatrixGenerator matrixGenerator;
-    private final WinningCombinationVerifier winningCombinationVerifier;
+    private final WinningCombinationVerifier WinningSameSymbolCombinationVerifier;
+    private final WinningCombinationVerifier WinningVerticallyCombinationVerifier;
+    private final WinningCombinationVerifier WinningHorizontallyCombinationVerifier;
+    private final WinningCombinationVerifier WinningDiagonallyLeftToRightCombinationVerifier;
+    private final WinningCombinationVerifier WinningDiagonallyRightToLeftCombinationVerifier;
     private final WinningBonusVerifier winningBonusVerifier;
     private final RewardCalculator rewardCalculator;
 
@@ -25,7 +31,11 @@ public class GameController {
     public GameController(String configPath) {
         this.loadingConfig = new LoadingConfigImpl();
         this.matrixGenerator = new MatrixGeneratorImpl();
-        this.winningCombinationVerifier = new WinningCombinationVerifierImpl();
+        this.WinningSameSymbolCombinationVerifier = new WinningSameSymbolCombinationVerifierImpl();
+        this.WinningVerticallyCombinationVerifier = new WinningVerticallyCombinationVerifierImpl();
+        this.WinningHorizontallyCombinationVerifier = new WinningHorizontallyCombinationVerifierImpl();
+        this.WinningDiagonallyLeftToRightCombinationVerifier = new WinningDiagonallyLeftToRightCombinationVerifierImpl();
+        this.WinningDiagonallyRightToLeftCombinationVerifier = new WinningDiagonallyRightToLeftCombinationVerifierImpl();
         this.rewardCalculator = new RewardCalculatorImpl();
         this.winningBonusVerifier = new WinningBonusVerifierImpl();
         this.config = loadingConfig.loadingConfig(configPath);
@@ -34,7 +44,11 @@ public class GameController {
 
     public void play(double betAmount) {
         matrix = matrixGenerator.generate(config);
-        winningCombinations = winningCombinationVerifier.verify(matrix, config);
+        WinningSameSymbolCombinationVerifier.verify(matrix, config, winningCombinations);
+        WinningVerticallyCombinationVerifier.verify(matrix, config, winningCombinations);
+        WinningHorizontallyCombinationVerifier.verify(matrix, config, winningCombinations);
+        WinningDiagonallyLeftToRightCombinationVerifier.verify(matrix, config, winningCombinations);
+        WinningDiagonallyRightToLeftCombinationVerifier.verify(matrix, config, winningCombinations);
         bonusSymbol = winningBonusVerifier.verify(winningCombinations.size(), matrix, config);
         reward = rewardCalculator.calculate(betAmount, winningCombinations, bonusSymbol, config);
     }
