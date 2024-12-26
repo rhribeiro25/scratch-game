@@ -223,13 +223,13 @@ public class Game {
         }
     }
 
-    private void calculateReward() {
-
+    private void applyBonusSymbol(){
+        if(appliedWinningCombinations.isEmpty() || appliedBonusSymbol.equals("MISS"))
+            appliedBonusSymbol = null;
     }
 
-    private void applyBonusSymbol(){
-        if(appliedWinningCombinations.isEmpty())
-            appliedBonusSymbol = null;
+    private void calculateReward() {
+
     }
 
     public Result getResult() {
