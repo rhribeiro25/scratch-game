@@ -10,13 +10,13 @@
 
 ## Description ##
 
-Problem statement: You need to build a scratch gameController, that will generate a matrix (for example 3x3) from symbols(based on probabilities for each individual cell) and based on winning combintations user either will win or lost.
+Problem statement: You need to build a scratch game, that will generate a matrix (for example 3x3) from symbols(based on probabilities for each individual cell) and based on winning combintations user either will win or lost.
 User will place a bet with any amount which we call *betting amount* in this assignment.
 
 
 There are two types of symbols: Standard Symbols, Bonus Symbols.
 
-**Standard Symbols**: identifies if user won or lost the gameController based on winning combinations (combination can be X times repeated symbols or symbols that follow a specific pattern)
+**Standard Symbols**: identifies if user won or lost the game based on winning combinations (combination can be X times repeated symbols or symbols that follow a specific pattern)
 Bonus symbols are described the table below:
 
 
@@ -298,7 +298,7 @@ Calculations: (bet_amount x reward(symbol_A) x reward(same_symbol_5_times) x rew
 
 Examples (with a winning combination [same symbols should be repeated at least 3 / reward x2]):
 
-Lost gameController:
+Lost game:
 
 ![Lost Game](lost_game.png "Lost")
 
@@ -306,9 +306,9 @@ Lost gameController:
 |-------------------|-----------------------------------------------------------------------------------------------------------------------------|
 | "bet_amount": 100 | { </br> "matrix": [ </br> ["A", "B", "C"], </br> ["E", "B", "5x"], </br> ["F", "D", "C"] </br> ], </br> "reward": 0 </br> } |
 
-Description: The gameController is settled as LOST, so bonus symbol has not been applied because the reward is 0.
+Description: The game is settled as LOST, so bonus symbol has not been applied because the reward is 0.
 
-Won gameController:
+Won game:
 
 ![Won Game](won_game_3x3.png "Won with 10x")
 
@@ -322,7 +322,7 @@ Formula: 100(betting amount) x 3 | reward(symbol B) x1(at least 3 same symbols w
 Note: Please make sure there are no errors while building (all test cases should be passed if you provided any) and your solution is testable through CLI like below:
 
 ```bash
- java -jar <your-jar-file> --config config_matrix[5][5].json --betting-amount 100
+ java -jar <your-jar-file> --config config.json --betting-amount 100
 ```
 
 | parameter      | description                                        |
