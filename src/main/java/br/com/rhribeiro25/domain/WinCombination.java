@@ -1,4 +1,4 @@
-package br.com.rhribeiro25;
+package br.com.rhribeiro25.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

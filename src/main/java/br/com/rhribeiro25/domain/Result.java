@@ -1,4 +1,4 @@
-package br.com.rhribeiro25;
+package br.com.rhribeiro25.domain;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -13,11 +13,6 @@ public class Result {
     private Map<String, List<String>> appliedWinningCombinations;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String appliedBonusSymbol;
-
-    public Result(Double reward, String[][] matrix) {
-        this.reward = reward;
-        this.matrix = matrix;
-    }
 
     public Result(Double reward, String[][] matrix, Map<String, List<String>> appliedWinningCombinations, String appliedBonusSymbol) {
         this.reward = reward;

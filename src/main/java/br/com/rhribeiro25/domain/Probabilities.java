@@ -1,9 +1,8 @@
-package br.com.rhribeiro25;
+package br.com.rhribeiro25.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
-import java.util.Map;
 
 public class Probabilities {
     @JsonProperty("standard_symbols")
