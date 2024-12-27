@@ -4,7 +4,6 @@ import br.com.rhribeiro25.application.usecases.*;
 import br.com.rhribeiro25.domain.Config;
 import br.com.rhribeiro25.domain.Result;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,7 +37,7 @@ public class GameController {
         this.WinningDiagonallyRightToLeftCombinationVerifier = new WinningDiagonallyRightToLeftCombinationVerifierImpl();
         this.rewardCalculator = new RewardCalculatorImpl();
         this.winningBonusVerifier = new WinningBonusVerifierImpl();
-        this.config = loadingConfig.loadingConfig(configPath);
+        this.config = loadingConfig.setupConfigurations(configPath);
         winningCombinations = new HashMap<>();
     }
 
