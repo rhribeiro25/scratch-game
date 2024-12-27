@@ -24,20 +24,16 @@ java -jar src/main/resources/scratch-game-1.0-all.jar --config src/main/resource
 ---
 
 { </br> "matrix": [ </br> ["F", "A", "D"], </br> ["A", "+1000", "E"], </br> ["A", "E", "A"] </br> ], </br> "reward": 1075.0, </br> "applied_winning_combinations": {</br> "A": ["same_symbol_4_times"] </br> }, </br> "applied_bonus_symbol": +1000 </br> }
-</br>
 ---
 
-{ </br> "matrix": [ </br> ["F", "F", "D", "E", "F"], </br> ["F", "F", "F", "F", "F"], </br> ["F", "F", "F", "E", "F"], </br> ["F", "F", "F", "F", "F"], </br> ["F", "F", "+500", "F", "D"] </br> ], </br> "reward": 1300.0, </br> "applied_winning_combinations": {</br> "F": ["same_symbols_vertically", "same_symbols_vertically", "same_symbols_horizontally", "same_symbols_horizontally", "same_symbols_diagonally_right_to_left"] </br> }, </br> "applied_bonus_symbol": +500 </br> }
-</br>
+{ </br> "matrix": [ </br> ["F", "F", "F", "D", "MISS"], </br> ["C", "E", "F", "D", "D"], </br> ["D", "B", "C", "E", "E"], </br> ["E", "F", "D", "F", "E"], </br> ["A", "D", "F", "D", "E"] </br> ], </br> "reward": 186.0, </br> "applied_winning_combinations": {</br> "D": ["same_symbol_7_times"] </br> "E": ["same_symbol_6_times"] </br> "F": ["same_symbol_7_times"] </br> } </br> }
 ---
 
-{ </br> "matrix": [ </br> ["F", "F", "F", "F", "F"], </br> ["C", "D", "D", "F", "+500"], </br> ["F", "F", "F", "F", "E"], </br> ["F", "F", "F", "F", "D"], </br> ["B", "F", "B", "C", "B"] </br> ], </br> "reward": 570.0, </br> "applied_winning_combinations": {</br> "B": ["same_symbol_3_times"] </br> "D": ["same_symbol_3_times"] </br> "F": ["same_symbols_horizontally"] </br> }, </br> "applied_bonus_symbol": +500 </br> }
-</br>
+{ </br> "matrix": [ </br> ["A", "F", "F", "F", "MISS"], </br> ["F", "F", "F", "F", "F"], </br> ["F", "E", "F", "F", "F"], </br> ["F", "F", "F", "E", "D"], </br> ["F", "F", "F", "C", "F"] </br> ], </br> "reward": 40.0, </br> "applied_winning_combinations": {</br> "F": ["same_symbols_vertically", "same_symbols_horizontally"] </br> } </br> }
 ---
 
-{ </br> "matrix": [ </br> ["E", "F", "5x", "E", "F"], </br> ["F", "D", "A", "F", "F"], </br> ["F", "F", "F", "D", "F"], </br> ["E", "F", "D", "F", "F"], </br> ["E", "F", "F", "F", 
-"F"] </br> ], </br> "reward": 290.0, </br> "applied_winning_combinations": {</br> "D": ["same_symbol_3_times"] </br> "E": ["same_symbol_4_times"] </br> "F": ["same_symbols_vertically"] </br> }, </br> "applied_bonus_symbol": 5x </br> }
--
+{ </br> "matrix": [ </br> ["F", "F", "F", "F", "F"], </br> ["E", "F", "E", "F", "F"], </br> ["F", "F", "F", "+500", "F"], </br> ["F", "F", "F", "F", "F"], </br> ["F", "F", "C", "B", "F"] </br> ], </br> "reward": 1500.0, </br> "applied_winning_combinations": {</br> "F": ["same_symbols_vertically", "same_symbols_horizontally", "same_symbols_diagonally_left_to_right", "same_symbols_diagonally_right_to_left"] </br> }, </br> "applied_bonus_symbol": +500 </br> }
+---
 
 ## Good practices ##
 
