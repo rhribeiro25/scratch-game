@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+
 public class GameControllerTest {
 
     static GameController gameController;
@@ -15,7 +16,7 @@ public class GameControllerTest {
     }
 
     @Test
-    @DisplayName("winning vertically combination verifier")
+    @DisplayName("play game result")
     public void play() {
         gameController.play(10);
         Assertions.assertTrue(gameController.getResult().getReward() > 0);
