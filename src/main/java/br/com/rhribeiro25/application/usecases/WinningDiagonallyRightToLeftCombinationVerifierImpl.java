@@ -22,7 +22,10 @@ public class WinningDiagonallyRightToLeftCombinationVerifierImpl implements Winn
                                 count++;
                                 int maxDiagonally = Math.min(config.getRows(), config.getColumns());
                                 if(count == maxDiagonally){
-                                    winningCombinations.computeIfAbsent(symbol, k -> new ArrayList<>()).add(combinationKey);
+                                    if(winningCombinations.get(symbol) == null)
+                                        winningCombinations.put(symbol, new ArrayList<>());
+                                    if(!winningCombinations.get(symbol).contains(combinationKey))
+                                        winningCombinations.get(symbol).add(combinationKey);
                                 }
                             }
                         }

@@ -18,7 +18,10 @@ public class WinningSameSymbolCombinationVerifierImpl implements WinningCombinat
 
                 if(config.getWinCombinations().get(combinationKey).getWhen().equals("same_symbols")
                         && config.getWinCombinations().get(combinationKey).getCount() == countBySymbol){
-                    winningCombinations.computeIfAbsent(symbol, k -> new ArrayList<>()).add(combinationKey);
+                    if(winningCombinations.get(symbol) == null)
+                        winningCombinations.put(symbol, new ArrayList<>());
+                    if(!winningCombinations.get(symbol).contains(combinationKey))
+                        winningCombinations.get(symbol).add(combinationKey);
                 }
             }
         }

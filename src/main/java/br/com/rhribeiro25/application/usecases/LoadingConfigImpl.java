@@ -13,7 +13,7 @@ public class LoadingConfigImpl implements LoadingConfig{
     }
 
     @Override
-    public Config loadingConfig(String configPath) {
+    public Config setupConfigurations(String configPath) {
         try{
             ObjectMapper mapper = new ObjectMapper();
             JsonNode configJson = mapper.readTree(new File(configPath));
