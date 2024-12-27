@@ -17,7 +17,9 @@ java -jar src/main/resources/scratch-game-1.0-all.jar --config src/main/resource
 
 
 { </br> "matrix": [ </br> ["E", "F", "C"], </br> ["A", "F", "+1000"], </br> ["A", "B", "D"] </br> ], </br> "reward": 0 </br> }
-</br>---</br>
+</br>
+---
+</br>
 { </br> "matrix": [ </br> ["E", "C", "F"], </br> ["A", "A", "C"], </br> ["+1000", "F", "A"] </br> ], </br> "reward": 1050.0, </br> "applied_winning_combinations": {</br> "A": ["same_symbol_3_times"] </br> }, </br> "applied_bonus_symbol": +1000 </br> }
 </br></br>
 { </br> "matrix": [ </br> ["A", "A", "D"], </br> ["A", "A", "C"], </br> ["A", "+500", "A"] </br> ], </br> "reward": 2000.0, </br> "applied_winning_combinations": {</br> "A": ["same_symbol_6_times", "same_symbols_vertically", "same_symbols_diagonally_left_to_right"] </br> }, </br> "applied_bonus_symbol": +500 </br> }
