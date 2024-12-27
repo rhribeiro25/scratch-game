@@ -43,16 +43,22 @@ public class GameController {
 
     public void play(double betAmount) {
         matrix = matrixGenerator.generate(config);
+        //Checking the rules and inserting into the attribute winningCombinations
         winningSameSymbolCombinationVerifier.verify(matrix, config, winningCombinations);
         winningVerticallyCombinationVerifier.verify(matrix, config, winningCombinations);
         winningHorizontallyCombinationVerifier.verify(matrix, config, winningCombinations);
         winningDiagonallyLeftToRightCombinationVerifier.verify(matrix, config, winningCombinations);
         winningDiagonallyRightToLeftCombinationVerifier.verify(matrix, config, winningCombinations);
+
+        //Checking the bonus rules and setting null or the amount to be applied in the future
         bonusSymbol = winningBonusVerifier.verify(winningCombinations.size(), matrix, config);
+
+        //Calculating rewards using rules and bonuses
         reward = rewardCalculator.calculate(betAmount, winningCombinations, bonusSymbol, config);
     }
 
     public Result getResult() {
+        //Builder design pattern
         return new Result.ResultBuilder()
             .reward(reward)
             .matrix(matrix)

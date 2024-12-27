@@ -6,5 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 public interface WinningCombinationVerifier {
+    //Applying SOLID
     void verify(String[][] matrix, Config config, Map<String, List<String>> winningCombinations);
 }
