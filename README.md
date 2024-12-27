@@ -1,4 +1,4 @@
-# Home Assignment: Scratch Game 2.0 #
+# Home Assignment: Scratch Game 3.0 #
 
 ## Java Version ##
 
