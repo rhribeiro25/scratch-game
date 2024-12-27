@@ -78,6 +78,37 @@ public class Result {
             return "";
     }
 
+    public static class ResultBuilder {
+        private Double reward;
+        private String[][] matrix;
+        private Map<String, List<String>> appliedWinningCombinations;
+        private String appliedBonusSymbol;
+
+        public ResultBuilder reward(Double reward) {
+            this.reward = reward;
+            return this;
+        }
+
+        public ResultBuilder matrix(String[][] matrix) {
+            this.matrix = matrix;
+            return this;
+        }
+
+        public ResultBuilder appliedWinningCombinations(Map<String, List<String>> appliedWinningCombinations) {
+            this.appliedWinningCombinations = appliedWinningCombinations;
+            return this;
+        }
+
+        public ResultBuilder appliedBonusSymbol(String appliedBonusSymbol) {
+            this.appliedBonusSymbol = appliedBonusSymbol;
+            return this;
+        }
+
+        public Result build() {
+            return new Result(reward, matrix, appliedWinningCombinations, appliedBonusSymbol);
+        }
+    }
+
     public Double getReward() {
         return reward;
     }
