@@ -54,6 +54,11 @@ public class GameController {
     }
 
     public Result getResult() {
-        return new Result(reward, matrix, winningCombinations, bonusSymbol);
+        return new Result.ResultBuilder()
+            .reward(reward)
+            .matrix(matrix)
+            .appliedWinningCombinations(winningCombinations)
+            .appliedBonusSymbol(bonusSymbol)
+            .build();
     }
 }
