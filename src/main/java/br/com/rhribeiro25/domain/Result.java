@@ -58,7 +58,7 @@ public class Result {
             Set<String> keys = appliedWinningCombinations.keySet();
             int count = 0;
             for (String key : keys) {
-                winningCombinationsFormated.append(count != 0 ? "] " : "").append("</br> ").append("\"")
+                winningCombinationsFormated.append(count != 0 ? "], " : "").append("</br> ").append("\"")
                         .append(key).append("\"").append(": [");
                 count++;
                 for (int j = 0; j < appliedWinningCombinations.get(key).size(); j++) {
