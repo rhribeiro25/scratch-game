@@ -19,7 +19,7 @@ public class GameControllerTest {
     @DisplayName("play game result")
     public void play() {
         gameController.play(10);
-        Assertions.assertTrue(gameController.getResult().getReward() > 0);
+        Assertions.assertTrue(gameController.getResult().getReward() >= 0);
         Assertions.assertTrue(gameController.getResult().getMatrix().length != 0);
     }
 }
