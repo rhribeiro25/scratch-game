@@ -8,7 +8,7 @@ Amazon Corretto 22.0.2
 
 java -jar src/main/resources/scratch-game-2.0-all.jar --config src/main/resources/config_matrix[3][3].json --betting-amount 100
 
-## Files for test ##
+## Files for testing ##
 
 - src/main/resources/config_matrix[3][3].json
 - src/main/resources/config_matrix[5][5].json
