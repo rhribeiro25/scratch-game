@@ -15,7 +15,7 @@ java -jar src/main/resources/scratch-game-1.0-all.jar --config src/main/resource
 
 ## Output Examples ##
 
-```json
+```html
 { </br> "matrix": [ </br> ["E", "F", "C"], </br> ["A", "F", "+1000"], </br> ["A", "B", "D"] </br> ], </br> "reward": 0 </br> }
 ```
 ```json
