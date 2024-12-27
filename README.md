@@ -2,7 +2,7 @@
 
 ## Java Version ##
 
-Amazon Carretto 22.0.2
+Amazon Corretto 22.0.2
 
 ## Command Line ##
 
