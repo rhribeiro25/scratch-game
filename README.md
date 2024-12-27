@@ -15,30 +15,34 @@ java -jar src/main/resources/scratch-game-1.0-all.jar --config src/main/resource
 
 ## Output Examples ##
 
-
 { </br> "matrix": [ </br> ["E", "F", "C"], </br> ["A", "F", "+1000"], </br> ["A", "B", "D"] </br> ], </br> "reward": 0 </br> }
 </br>
 ---
 </br>
-{ </br> "matrix": [ </br> ["A", "E", "F"], </br> ["A", "A", "MISS"], </br> ["A", "C", "F"] </br> ], </br> "reward": 150.0, </br> "applied_winning_combinations": {</br> "A": ["same_symbol_4_times", "same_symbols_vertically"] </br> } </br> }
 
+{ </br> "matrix": [ </br> ["A", "E", "F"], </br> ["A", "A", "MISS"], </br> ["A", "C", "F"] </br> ], </br> "reward": 150.0, </br> "applied_winning_combinations": {</br> "A": ["same_symbol_4_times", "same_symbols_vertically"] </br> } </br> }
 </br>
 ---
 </br>
+
 { </br> "matrix": [ </br> ["F", "A", "D"], </br> ["A", "+1000", "E"], </br> ["A", "E", "A"] </br> ], </br> "reward": 1075.0, </br> "applied_winning_combinations": {</br> "A": ["same_symbol_4_times"] </br> }, </br> "applied_bonus_symbol": +1000 </br> }
 </br>
 ---
 </br>
+
 { </br> "matrix": [ </br> ["F", "F", "D", "E", "F"], </br> ["F", "F", "F", "F", "F"], </br> ["F", "F", "F", "E", "F"], </br> ["F", "F", "F", "F", "F"], </br> ["F", "F", "+500", "F", "D"] </br> ], </br> "reward": 1300.0, </br> "applied_winning_combinations": {</br> "F": ["same_symbols_vertically", "same_symbols_vertically", "same_symbols_horizontally", "same_symbols_horizontally", "same_symbols_diagonally_right_to_left"] </br> }, </br> "applied_bonus_symbol": +500 </br> }
 </br>
 ---
 </br>
+
 { </br> "matrix": [ </br> ["F", "F", "F", "F", "F"], </br> ["C", "D", "D", "F", "+500"], </br> ["F", "F", "F", "F", "E"], </br> ["F", "F", "F", "F", "D"], </br> ["B", "F", "B", "C", "B"] </br> ], </br> "reward": 570.0, </br> "applied_winning_combinations": {</br> "B": ["same_symbol_3_times"] </br> "D": ["same_symbol_3_times"] </br> "F": ["same_symbols_horizontally"] </br> }, </br> "applied_bonus_symbol": +500 </br> }
 </br>
 ---
 </br>
+
 { </br> "matrix": [ </br> ["E", "F", "5x", "E", "F"], </br> ["F", "D", "A", "F", "F"], </br> ["F", "F", "F", "D", "F"], </br> ["E", "F", "D", "F", "F"], </br> ["E", "F", "F", "F", 
 "F"] </br> ], </br> "reward": 290.0, </br> "applied_winning_combinations": {</br> "D": ["same_symbol_3_times"] </br> "E": ["same_symbol_4_times"] </br> "F": ["same_symbols_vertically"] </br> }, </br> "applied_bonus_symbol": 5x </br> }
+---
 
 ## Good practices ##
 
